@@ -18,12 +18,11 @@ def login():
 @app.route('/verify', methods=['POST'])                       #login verify and redirection
 def verify():
     if verifyLogin(request.form['logemail'], request.form['pswd']):
-        print("idhar aagya hai")
         return render_template('/userModule.html')
     else:
-        render_template('/mainHome.html')
+        return render_template('/mainHome.html')
 
-@app.route('/newUSer', methods=['POST'])
+@app.route('/newUSer', methods=['POST'])        #to make
 def newUser():
     return addUser()
 

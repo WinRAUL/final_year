@@ -15,12 +15,14 @@ def putComplain(complainString):
 def verifyLogin(email, password):
     hash_object = hashlib.md5(password.encode())
     password = hash_object.hexdigest()
-    print("pass: ",password)
     myCursor = conn.cursor()
-    myCursor.execute("select * from Users where email=%s AND pass=%s",(email,password))
-    
-    conn.commit()
+    myCursor.execute("select * from users where Email=%s AND Pass=%s",(email,password,))
+    res = myCursor.fetchall()
     conn.close()
+    if(bool(res)):
+        return True
+    else:
+        return False
 
 ########################
 # def putComplain(complainString):
