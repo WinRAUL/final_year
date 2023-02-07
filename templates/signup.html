@@ -7,11 +7,6 @@
   <link rel="stylesheet" href="/static/login.css">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"
     integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap-theme.min.css"
-    integrity="sha384-6pzBo3FDv/PJ8r2KRkGHifhEocL+1X2rVCTTkUfGk7/0pbek5mMa1upzvWbrUbOZ" crossorigin="anonymous">
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"
-    integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd"
-    crossorigin="anonymous"></script>
   <link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet">
   <title>tilte</title>
 </head>
@@ -21,9 +16,16 @@
     <div class="row">
       <div class="col-md-4  col-sm-4 col-xs-12"></div>
       <div class="col-md-4  col-sm-4 col-xs-12 main">
-        
-        <form action="register" method="post" action="/newUser" class="form-container" style="margin-top: 8vh;" >
 
+        <form method="post" action="/newUser" class="form-container" style="margin-top: 8vh;" >
+        
+          {% with messages = get_flashed_messages() %}
+          {% if messages %}
+          <div class="alert alert-warning" role="alert">
+            {{messages}}
+          </div>
+          {% endif %}
+          {% endwith %}
           <h3 class="heading">Sign Up</h3>
           <div class="form-group">
             <label for="exampleInputEmail1">Email address</label>
@@ -32,12 +34,12 @@
           </div>
           <div class="form-group">
             <label for="exampleInputPassword1">Password</label>
-            <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password" required>
+            <input type="password" class="form-control" name="pwd1" id="exampleInputPassword1" placeholder="Password" required>
           </div>
 
           <div class="form-group">
-            <label for="exampleInputPassword1">Password</label>
-            <input type="password" class="form-control" id="exampleInputPassword1" name="pswd"
+            <label for="exampleInputPassword1">Confirm Password</label>
+            <input type="password" class="form-control" id="exampleInputPassword1" name="pwd2"
               placeholder="Confirm Password" required>
           </div>
           <button type="submit" class="btn btn-success btn-block">Submit</button>
