@@ -1,0 +1,18 @@
+body{
+    background-image:url("/static/img/image-2_new.jpg");
+    background-size: cover;
+  }
+
+@import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');
+.heading{
+    background-color: rgba(0, 255, 255, 0.584);
+    text-align: center;
+    padding: 5PX;
+    font-family: "Lobster", cursive;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+.complain-list{
+    border: 2px solid black;
+}

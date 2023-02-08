@@ -5,7 +5,7 @@ app.secret_key = "sessionKey"
 
 @app.route('/')
 @app.route('/mainHome')                    #homePage
-def index():
+def mainHome():
     return render_template('/mainHome.html')
 
 @app.route('/signup')                      #signup.html
@@ -24,17 +24,23 @@ def verify():
         flash("Invalid Credentials!")
         return render_template('/mainHome.html')
 
-@app.route('/newUser', methods=['POST'])        #adding user to DB
+@app.route('/newUser', methods=['POST'])   #adding user to DB
 def newUser():
     if addUser(request.form['email'], encrypt(request.form['pwd1']), encrypt(request.form['pwd2'])):
         return render_template('/userModule.html')
     else:
-        flash("Password is not matching!")
         return render_template('/signup.html')
 
-@app.route('/index')
-def userMod():
-    return render_template('/index.html')
+@app.route('/userModule', methods=['POST'])   #adding complaint
+def newComplain():
+    dept='dept'
+    mail='test@mail.com'
+    putComplain(request.form['complain'],dept, mail)
+    return render_template('/userModule.html')
+
+@app.route('/admin')
+def admin():
+    return render_template('/adminModule.html')
 
 @app.errorhandler(404)
 def page_not_found(error):

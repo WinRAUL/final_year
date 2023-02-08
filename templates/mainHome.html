@@ -8,30 +8,7 @@
         rel="stylesheet"
         href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
       />
-
-      <style>
-        .welcome-text {
-          text-align: center;
-          font-weight: bolder;
-          font-size: 40px;
-          color: rgb(53, 134, 229);
-        }
-        @import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');
-        *{
-          font-family: 'Lobster', cursive;
-        }
-        .menu-bar{
-          text-align: center;
-          position: absolute;
-          top: 30%;
-          left:41%;
-          right:35%;
-          border: 1px solid black;
-          border-radius: 10px;
-          background-color: rgba(156, 231, 206, 0.695);
-          padding: 50px;
-        }
-      </style>
+      <link rel="stylesheet" href="/static/mainHome.css">
     <!-- Login css -->
       <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" 
         integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
@@ -46,57 +23,6 @@
         <section class="header">
           <div class="welcome-text">
             <h1>Welcome To Complaint Management System</h1>
-          </div>
-          <div class="slider">
-            <div id="slider" class="carousel slide" data-bs-ride="carousel">
-              <div class="carousel-inner">
-                <div class="carousel-item active">
-                  <img src="./static/img/image-1.jpeg" class="d-block w-100" />
-                </div>
-                <div class="carousel-item">
-                  <img src="./static/img/image-2.jpeg" class="d-block w-100" />
-                </div>
-                <div class="carousel-item">
-                  <img src="./static/img/image-3.jpeg" class="d-block w-100" />
-                </div>
-                <div class="carousel-item">
-                  <img src="./static/img/image-4.jpeg" class="d-block w-100" />
-                </div>
-                <div class="carousel-item">
-                  <img src="./static/img/image-5.jpeg" class="d-block w-100" />
-                </div>
-                <div class="carousel-item">
-                  <img src="./static/img/image-6.jpeg" class="d-block w-100" />
-                </div>
-                <div class="carousel-item">
-                  <img src="./static/img/image-7.jpeg" class="d-block w-100" />
-                </div>
-              </div>
-              <button
-                class="carousel-control-prev"
-                type="button"
-                data-bs-target="#slider"
-                data-bs-slide="prev"
-              >
-                <span
-                  class="carousel-control-prev-icon"
-                  aria-hidden="true"
-                ></span>
-                <span class="visually-hidden">Previous</span>
-              </button>
-              <button
-                class="carousel-control-next"
-                type="button"
-                data-bs-target="#slider"
-                data-bs-slide="next"
-              >
-                <span
-                  class="carousel-control-next-icon"
-                  aria-hidden="true"
-                ></span>
-                <span class="visually-hidden">Next</span>
-              </button>
-            </div>
           </div>
         </section>
         <div class="wrapper">
@@ -132,7 +58,7 @@
                     <div>
                       <button type="submit" class="btn btn-success btn-block">Submit</button>
                     </div>
-                    <h4>Don't have account?<a href="/signup">Sign up</a></h4>
+                    <h4>Don't have account?<a href="/signup" style="color: chocolate;">Sign up</a></h4>
                 </div>
                 </form>
               </div>
