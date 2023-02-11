@@ -8,14 +8,42 @@ body{
     background-size: cover;
 }
 
+.username{
+    text-shadow: 3px 1px 1px #000000;
+    background-color: #084a5e;
+    color: #eefe1a;
+    position: relative;
+    width: max-content;
+    padding: 3px;
+    border-radius: 10px;
+}
+
+.error{
+    background-color: #ff000047;
+    color: #ffffff;
+    float: right;
+    width: max-content;
+    padding: 5px;
+}
+.success{
+    background-color: #016d0f9e;
+    color: #ffffff;
+    float: right;
+    width: max-content;
+    padding: 5px;
+}
+
 .query{
     text-align: center;
     margin-top: 5%;
 }
 
 textarea{
-    width: 700px; height: 150px;
-    background-color: #0d4e6266;
+    width: 700px;
+    height: 150px;
+    background-color: #0d4e6294;
+    font-size: 22px;
+    color: #d9ffe1;
 }
 
 #btnSubmit{
@@ -32,4 +60,23 @@ textarea{
 form h1, form h3{
     font-family: 'Lobster', cursive;
     text-shadow: 2px 2px #eefe1a;
+}
+
+form h3{
+    font-size: 26px;
+}
+.logout{
+    background-color: #084a5e;
+    font-size: 20px;
+    width: max-content;
+    position: absolute;
+    bottom: 5px;
+    right: 10px;
+    padding: 5px;
+    border: 3px solid #b97200;
+}
+
+.logout a{
+    color: #ffffff;
+    text-decoration: none;
 }

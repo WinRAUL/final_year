@@ -6,27 +6,42 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Index</title>
     <link rel="stylesheet" href="/static/userModule.css">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"
-    integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
-</head>
+    </head>
 <body>
-    {% with messages = get_flashed_messages(with_categories=true) %}
-          {% if messages %}
-          <div class="alert alert-info" role="alert">
-            {{category}} {{messages}}
-          </div>
-          {% endif %}
-        {% endwith %}
+
+    <div class="username">
+        User: {{email}}
+    </div>
+
+    {% with messages = get_flashed_messages(category_filter=["error"]) %}
+        {% if messages %}
+        <div class="error">
+            {{messages}}
+        </div>
+        {% endif %}
+    {% endwith %}
+    
+    {% with messages = get_flashed_messages(category_filter=["success"]) %}
+        {% if messages %}
+        <div class="success">
+            {{messages}}
+        </div>
+        {% endif %}
+    {% endwith %}
+
     <div class="query">
-        
         <form action="/userModule" method="POST">
             <h1>Complain Collection Panel</h1>
             <br><br><br>
             <h3>Enter your query below</h3>
-            <textarea name="complain"></textarea>
+            <textarea name="complain" autofocus></textarea>
             <br>
             <input type="submit" value="Send" id="btnSubmit">
+            <input type="hidden" name="email" value="{{email}}">
         </form>
+    </div>
+    <div class="logout">
+        <a href="/logout">Logout</a>
     </div>
 </body>
 </html>

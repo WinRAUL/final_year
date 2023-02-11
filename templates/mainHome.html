@@ -1,72 +1,74 @@
 <doctype html>
   <html lang="en">
-    <head>
-      <meta charset="UTF-8" />
-      <title>COMPLAIN MANAGEMENT SYSTEM</title>
 
-      <link
-        rel="stylesheet"
-        href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
-      />
-      <link rel="stylesheet" href="/static/mainHome.css">
+  <head>
+    <meta charset="UTF-8" />
+    <title>COMPLAIN MANAGEMENT SYSTEM</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="/static/mainHome.css">
     <!-- Login css -->
-      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" 
-        integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
-      
-      <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"
-        integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd" crossorigin="anonymous"></script>
-      <link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"
+      integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"
+      integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd"
+      crossorigin="anonymous"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet">
     <!--  -->
-    </head>
-    <body>
-      <header>
-        <section class="header">
-          <div class="welcome-text">
-            <h1>Welcome To Complaint Management System</h1>
-          </div>
-        </section>
-        <div class="wrapper">
-          <div class="logo">
-            <img src="#" alt="" />
-          </div>
+  </head>
 
-          <!-- Login div -->
-          
-          <div class="menu-bar">                        
-            {% with messages = get_flashed_messages() %}
-            {% if messages %}
-            <div class="alert alert-warning" role="alert">
-              {{messages}}
-            </div>
-            {% endif %}
-            {% endwith %}
-            <div class="container-fluid bg">
-          
-              <div class="row">
-                  <form action="/verify" class="form-container" method="POST">
-                    <h3 class="heading">Login</h3>
-                    <div class="form-group">
-                      <label for="exampleInputEmail1">Email address</label>
-                      <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Email" name="logemail"
-                        required>
-                    </div>
-                    <div class="form-group">
-                      <label for="exampleInputPassword1">Password</label>
-                      <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password" name="pswd"
-                        required>
-                    </div>
-                    <div>
-                      <button type="submit" class="btn btn-success btn-block">Submit</button>
-                    </div>
-                    <h4>Don't have account?<a href="/signup" style="color: chocolate;">Sign up</a></h4>
-                </div>
-                </form>
-              </div>
-              <div class="col-md-4  col-sm-4 col-xs-12"></div>
-            </div>
-          </div>
+  <body>
+    <header>
+      <section class="header">
+        <div class="welcome-text">
+          <h1>Welcome To Complaint Management System</h1>
         </div>
-      </header>
-    </body>
-  </html></doctype
->
+      </section>
+      {% with messages = get_flashed_messages(category_filter=["success"]) %}
+        {% if messages %}
+        <div class="success">
+            {{messages}}
+        </div>
+        {% endif %}
+      {% endwith %}
+      <!-- Login div -->
+
+      <div class="container-fluid bg">
+        <div class="row">
+          <div class="col-md-4  col-sm-4 col-xs-12"></div>
+          <div class="col-md-4  col-sm-4 col-xs-12 main">
+              <div class="menu-bar">
+                {% with messages = get_flashed_messages(category_filter=["error"]) %}
+                {% if messages %}
+                <div class="error">
+                  {{messages}}
+                </div>
+                {% endif %}
+                {% endwith %}
+              <form action="/verify" class="form-container" method="POST">
+                <h3 class="heading">Login</h3>
+                <div class="form-group">
+                  <label for="exampleInputEmail1">Email address</label>
+                  <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Email" name="logemail"
+                    required>
+                </div>
+                <div class="form-group">
+                  <label for="exampleInputPassword1">Password</label>
+                  <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password"
+                    name="pswd" required>
+                </div>
+                <div>
+                  <button type="submit" class="btn btn-success btn-block">Submit</button>
+                </div>
+                <h4>Don't have account?<a href="/signup" style="color: chocolate;">Sign up</a></h4>
+              </form>
+            </div>
+            <div class="col-md-4  col-sm-4 col-xs-12"></div>
+          </div>
+          <div class="col-md-4  col-sm-4 col-xs-12"></div>
+        </div>
+      </div>
+    </header>
+  </body>
+
+  </html>
+</doctype>
