@@ -1,7 +1,11 @@
+*{
+    /* margin: 0; */
+    padding: 0;
+}
 body{
-    background-image:url("/static/img/image-2_new.jpg");
+    background-image:url("/static/img/image-2.jpeg");
     background-size: cover;
-  }
+}
 
 @import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');
 .heading{
@@ -13,6 +17,32 @@ body{
     border-top-right-radius: 10px;
 }
 
-.complain-list{
-    border: 2px solid black;
+table, th, td{
+    border: 1px solid black;
+    border-collapse: collapse;
+    font-family: sans-serif;
+    font-weight: 600;
+}
+
+th{
+    background-color: rgb(129, 129, 129);
+}
+
+td{
+    padding: 5px 2px 5px 2px;
+}
+
+.error{
+    background-color: rgba(174, 0, 0, 0.594);
+    color: azure;
+    text-align: center;
+    padding: 10px;
+}
+
+tr:nth-child(even){
+    background-color: #fff74ae6;
+}
+
+tr:nth-child(odd){
+    background-color: #d5e100;
 }

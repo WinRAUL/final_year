@@ -11,12 +11,18 @@
     <div class="heading">
         <h1>Admin Dashboard</h1>
     </div>
+    {% with messages = get_flashed_messages(category_filter=["error"]) %}
+        {% if messages %}
+        <div class="error">
+            {{messages}}
+        </div>
+        {% endif %}
+      {% endwith %}
     <div class="complain-list">
         <table >
             <tr>
-                {%for head in headers%}
-                <th>{{head}}</th>
-                {%endfor%}
+                <th>Complaint</th>
+                <th>Reported By</th>
             </tr>
             {%for row in tuples%}
             <tr>

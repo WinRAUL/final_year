@@ -1,5 +1,6 @@
-from functionalities import encrypt, putComplain, verifyLogin, addUser
-from flask import Flask, render_template, request, flash, session
+from functionalities import encrypt, putComplain, verifyLogin, addUser, getComplaints
+from flask import Flask, render_template, request, redirect, flash
+from classifier import classify
 app = Flask(__name__)
 app.secret_key = "sessionKey"
 
@@ -17,25 +18,31 @@ def verify():
     if verifyLogin(request.form['logemail'], encrypt(request.form['pswd'])):
         return render_template('/userModule.html',email=request.form['logemail'])
     else:
-        flash("Invalid Credentials!","error")
-        return render_template('/mainHome.html')
+        return redirect('/',302)
 
 @app.route('/newUser', methods=['POST'])   #adding user to DB
 def newUser():
     if addUser(request.form['email'], encrypt(request.form['pwd1']), encrypt(request.form['pwd2'])):
-        return render_template('/userModule.html',email=request.form['email'])
+        return render_template('/userModule.html', email=request.form['email'])
     else:
         return render_template('/signup.html')
 
-@app.route('/userModule', methods=['POST'])   #adding complaint
+@app.route('/userModule', methods=['POST'])   #user page
 def newComplain():
-    mail=request.form['email']
-    putComplain(request.form['complain'] ,mail)
-    return render_template('/userModule.html',email=mail)
+    email=request.form['email']
+    complain = request.form['complain']
+    putComplain(request.form['complain'], email) #will be removed
+    if complain=='':
+        flash("Empty response not acceptable","error")
+        return render_template('/userModule.html', email=email)
+    # reslt = classify(request.form['complain'])
+    # putComplain(request.form['complain'], result, email)
+    return render_template('/userModule.html', email=email)
 
 @app.route('/admin')
 def admin():
-    return render_template('/adminModule.html')
+    # return render_template('/adminModule.html')
+    return render_template('/adminModule.html', tuples=getComplaints())
 
 @app.route('/logout')
 def logout():
@@ -46,5 +53,5 @@ def logout():
 def page_not_found(error):
     return render_template('404.html'), 404
 
-if __name__ == '__main__':
+if __name__ == '__main__':                  #app entrypoint
     app.run()
