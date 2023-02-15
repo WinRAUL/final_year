@@ -22,13 +22,25 @@
         <table >
             <tr>
                 <th>Complaint</th>
+                <th>Department</th>
                 <th>Reported By</th>
             </tr>
             {%for row in tuples%}
             <tr>
-                {%for data in row%}
-                <td>{{data}}</td>
-                {%endfor%}
+                <td>{{row[0]}}</td>
+                {% set dept = {1:"Road Department", 2:"Sewage Maintenance", 3:"Electric Department", 4:"Water Department", 5:"Waste Management", 6:"Urban Amenities", 7:"Public Toilets", 8:"Disposal of Dead Animals", 9:"Pest Control"} %}
+                <td>
+                {% if row[1]==1 %} {{ dept[1] }}{% endif %}
+                {% if row[2]==1 %} {{ dept[2] }}{% endif %}
+                {% if row[3]==1 %} {{ dept[3] }}{% endif %}
+                {% if row[4]==1 %} {{ dept[4] }}{% endif %}
+                {% if row[5]==1 %} {{ dept[5] }}{% endif %}
+                {% if row[6]==1 %} {{ dept[6] }}{% endif %}
+                {% if row[7]==1 %} {{ dept[7] }}{% endif %}
+                {% if row[8]==1 %} {{ dept[8] }}{% endif %}
+                {% if row[9]==1 %} {{ dept[9] }}{% endif %}
+                </td>
+                <td>{{row[-1]}}</td>
             </tr>
             {%endfor%}
         </table>

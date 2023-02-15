@@ -43,46 +43,24 @@ def addUser(email, pwd1, pwd2):
 
 def getComplaints():
     try:
-        myCursor.execute("select Complains,User from dataset ORDER BY Complains DESC LIMIT 20 ")
+        myCursor.execute("select * from dataset ORDER BY Complains DESC LIMIT 20 ")
         res = myCursor.fetchall()
         myCursor.reset()
         return res
     except Error as e:
         flash(e,"error")
         return ()
-
-# def putComplain(complainString,email):        #old
-#     if(complainString==''):
-#         flash("Empty response not acceptable","error")
-#         return
-#     try:
-#         myCursor = conn.cursor()
-#         myCursor.execute("insert into complaints(`Complains`, `Department`, `User`) values(%s,%s,%s)",(complainString,'dept',email))  #2nd param is a tuple
-#         flash("Submitted succesfully","success")
-#         conn.commit()
-#     except Error as e:
-#         flash("Submition Failed","error")
-#         conn.rollback()
-
         
-def putComplain(complainString, result, email):          #new
+def putComplain(complainString, result, email):
     if(complainString==''):
         flash("Empty response not acceptable","error")
         return
     try:
         myCursor = conn.cursor()
-        # cols = ("Complains", "Road Department", "Sewage Maintenance", "Electric Department", "Water Department", "Waste Management", "Urban Amenities", "Public Toilets", "Disposal of Dead Animals", "Pest Control", "User")
         val = (complainString,) + tuple(result) + (email,)
         myCursor.execute("insert into dataset values(%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)",val)
-        # conn.commit()
-        # flash("Submitted Succesfully","success")
-        print("Submitted Succesfully")
-        print(val)
+        conn.commit()
+        flash("Submitted Succesfully","success")
     except Error as e:
-        print(e)
         conn.rollback()
-        flash("Submition Failed","error")
-    finally:
-        conn.close()
-
-# putComplain("the roads are in bad shape",[1,0,1,0,1,0,1,0,1],"mymail@mail.com")
+        flash(e,"error")

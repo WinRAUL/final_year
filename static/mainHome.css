@@ -50,3 +50,16 @@ label{
   padding: 5px;
   margin-left: -82px;
 }
+
+.lookup{
+    width: max-content;
+    padding: 3px;
+    color: #000000;
+    background-color: #a8565633;
+    border-radius: 3px;
+    position: absolute;
+    right: 5px;
+}
+a:focus, a:hover{
+  background-color: #35c0e2;
+}
