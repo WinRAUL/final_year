@@ -4,8 +4,7 @@ from classifier import classify
 app = Flask(__name__)
 app.secret_key = "sessionKey"
 
-@app.route('/')
-@app.route('/mainHome')                    #homePage
+@app.route('/')                     #homePage
 def mainHome():
     return render_template('/mainHome.html')
 
@@ -30,14 +29,14 @@ def newUser():
 @app.route('/userModule', methods=['POST'])   #user page
 def newComplain():
     email=request.form['email']
-    complain = request.form['complain']
-    putComplain(request.form['complain'], email) #will be removed
-    if complain=='':
+    complain = (request.form['complain']).strip()
+    if (complain==''):
         flash("Empty response not acceptable","error")
         return render_template('/userModule.html', email=email)
-    # reslt = classify(request.form['complain'])
-    # putComplain(request.form['complain'], result, email)
-    return render_template('/userModule.html', email=email)
+    else:
+        result = classify(request.form['complain'])
+        putComplain(request.form['complain'], result, email)
+        return render_template('/userModule.html', email=email)
 
 @app.route('/admin')
 def admin():
@@ -47,7 +46,7 @@ def admin():
 @app.route('/logout')
 def logout():
     flash("Logged Out","success")
-    return render_template('/mainHome.html')
+    return redirect('/')
 
 @app.errorhandler(404)      #to handle any non-specified endpoint
 def page_not_found(error):

@@ -25,7 +25,7 @@ def verifyLogin(email, password):
             flash("Invalid Credentials!","error")
             return False
     except Error as e:
-        flash("e","error")
+        flash(e,"error")
         return False
 
 def addUser(email, pwd1, pwd2):
@@ -36,6 +36,7 @@ def addUser(email, pwd1, pwd2):
         try:
             myCursor.execute("insert into users(email,pass) values(%s,%s)",(email,pwd1))
             conn.commit()
+            flash("User added")
             return True
         except:
             flash("Email alrerady in use")
@@ -52,14 +53,11 @@ def getComplaints():
         return ()
         
 def putComplain(complainString, result, email):
-    if(complainString==''):
-        flash("Empty response not acceptable","error")
-        return
     try:
-        myCursor = conn.cursor()
         val = (complainString,) + tuple(result) + (email,)
+        myCursor = conn.cursor()
         myCursor.execute("insert into dataset values(%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)",val)
-        conn.commit()
+        # conn.commit() //do not uncomment in development (only for production use)
         flash("Submitted Succesfully","success")
     except Error as e:
         conn.rollback()

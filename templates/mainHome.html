@@ -25,7 +25,7 @@
       </section>
       {% with messages = get_flashed_messages(category_filter=["success"]) %}
         {% if messages %}
-        <div class="success">
+        <div class="success msg">
             {{messages}}
         </div>
         {% endif %}
@@ -39,7 +39,7 @@
               <div class="menu-bar">
                 {% with messages = get_flashed_messages(category_filter=["error"]) %}
                 {% if messages %}
-                <div class="error">
+                <div class="error msg">
                   {{messages}}
                 </div>
                 {% endif %}
@@ -62,7 +62,6 @@
                 <h4>Don't have account?<a href="/signup" style="color: chocolate;">Sign up</a></h4>
               </form>
             </div>
-            <div class="col-md-4  col-sm-4 col-xs-12"></div>
           </div>
           <div class="col-md-4  col-sm-4 col-xs-12">
             <a class="lookup" href="/admin">View previous Complains</a>
@@ -70,7 +69,11 @@
         </div>
       </div>
     </header>
-  </body>
-
   </html>
+</body>
+<script type="text/javascript">
+  setTimeout(()=> {
+    document.querySelector('.msg').style.display = 'none';
+  }, 4000);
+</script>
 </doctype>

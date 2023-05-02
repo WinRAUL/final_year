@@ -15,7 +15,7 @@
 
     {% with messages = get_flashed_messages(category_filter=["error"]) %}
         {% if messages %}
-        <div class="error">
+        <div class="msg error">
             {{messages}}
         </div>
         {% endif %}
@@ -23,7 +23,7 @@
     
     {% with messages = get_flashed_messages(category_filter=["success"]) %}
         {% if messages %}
-        <div class="success">
+        <div class="msg success">
             {{messages}}
         </div>
         {% endif %}
@@ -44,4 +44,9 @@
         <a href="/logout">Logout</a>
     </div>
 </body>
+<script type="text/javascript">
+    setTimeout(()=> {
+        document.querySelector('.msg').style.display = 'none';
+    }, 4000);
+</script>
 </html>

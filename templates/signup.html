@@ -19,7 +19,7 @@
         <form method="post" action="/newUser" class="form-container" style="margin-top: 8vh;" >
           {% with messages = get_flashed_messages() %}
           {% if messages %}
-          <div class="alert alert-warning" role="alert">
+          <div class="alert alert-warning msg" role="alert">
             {{messages}}
           </div>
           {% endif %}
@@ -53,5 +53,9 @@
     </div>
   </div>
 </body>
-
+<script type="text/javascript">
+  setTimeout(()=> {
+      document.querySelector('.msg').style.display = 'none';
+  }, 4000);
+</script>
 </html>

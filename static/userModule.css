@@ -24,6 +24,7 @@ body{
     float: right;
     width: max-content;
     padding: 5px;
+    font-size: 20px;
 }
 .success{
     background-color: #016d0f9e;
